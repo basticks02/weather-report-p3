@@ -9,16 +9,16 @@ function App() {
 
 
   const fetchData = async () => {
-    const apiKey = process.env.REACT_APP_API_KEY
+    const apiKey = import.meta.env.VITE_APP_API_KEY
     const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`)
     const data = await response.json()
     setWeatherData(data)
   };
 
   useEffect(() => {
-    if (city !== '') {
+    // if (city !== '') {
       fetchData();
-    }
+    // }
   }, [city]);
 
   const handleCityChange = (newCity) => {
